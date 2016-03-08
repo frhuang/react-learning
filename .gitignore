@@ -1,0 +1,11 @@
+react-webpack-babel6/node_modules
+react-webpack-babel6-redux/node_modules
+.DS_Store
+.idea
+.idea/jsLibraryMappings.xml
+
+.idea/dictionaries/hfrun.xml
+
+.idea/inspectionProfiles/profiles_settings.xml
+
+.idea/inspectionProfiles/Project_Default.xml
