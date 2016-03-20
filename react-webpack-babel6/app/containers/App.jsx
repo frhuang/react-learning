@@ -15,20 +15,20 @@ export default class App extends Component {
         };
     }
 
-    addItem =(e) =>{
+    addItem(e){
         var lists = this.state.items;
         e.id = new Date().getTime();
         var newLists = lists.concat([e]);
         this.setState({items: newLists});
     }
 
-    deleteItem = (e) => {
-        var comments = this.state.data;
+    deleteItem(e){
+        var comments = this.state.items;
         var len = comments.length;
         for(let i = 0; i < len; i++) {
             if(comments[i].id === e) {
                 comments.splice(i, 1);
-                this.setState({data: comments});
+                this.setState({items: comments});
                 break;
             }
         }
@@ -39,7 +39,7 @@ export default class App extends Component {
             <div>
                 <h1>发表心情</h1>
                 <CommentForm addItem={this.addItem.bind(this)} />
-                <CommentLists items={this.state.items} deleteItem={this.deleteItem}/>
+                <CommentLists items={this.state.items} deleteItem={this.deleteItem.bind(this)}/>
             </div>
         )
     }

@@ -1,21 +1,26 @@
 var webpack = require('webpack'),
-    WebpackDevServer = require('webpack-dev-server'),
+    express = require('express'),
+    webpackDevMiddleware = require('webpack-dev-middleware'),
+    webpackHotMiddleware = require('webpack-hot-middleware'),
     config = require('./webpack.config'),
     compiler = webpack(config);
 
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080/", "webpack/hot/dev-server");
+var app = new express();
 
-var server = new WebpackDevServer(compiler, {
-    historyApiFallback: false,
-    hot: true,
-    inline: true,
-    progress: true,
-    stats: 'errors-only'
+app.use(webpackDevMiddleware(compiler, {
+    noInfo: true
+}));
+
+app.use(webpackHotMiddleware(compiler));
+
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + '/build/index.html')
 });
 
-server.listen(8080, '127.0.0.1', function(err, result) {
+app.listen(3000 ,function(err, result) {
     if(err) {
         console.log(err);
+        return;
     }
-    console.log('listening at 127.0.0.1:8080');
+    console.log('listening at localhost:3000');
 });

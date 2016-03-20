@@ -20,7 +20,8 @@ module.exports = {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
                 include: path.join(__dirname, 'app')
-            }
+            },
+            { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
         ]
     },
     plugins: [

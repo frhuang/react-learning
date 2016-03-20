@@ -1,10 +1,10 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 
 
 module.exports = {
     entry: [
+        'webpack-hot-middleware/client',
         './app/index.jsx'
     ],
     output: {
@@ -24,11 +24,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-            title: 'react-webpack-babel6',
-            template: './build/index.html',
-            inject: false
-        })
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

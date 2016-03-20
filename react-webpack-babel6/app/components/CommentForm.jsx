@@ -8,13 +8,13 @@ export default class CommentForm extends Component {
         };
     }
 
-    handleTextChange = (e) =>{
+    handleTextChange(e){
         this.setState({
             text: e.target.value
         });
     }
 
-    handleSubmit = (e) =>{
+    handleSubmit(e){
         const text = e.target.value.trim();
         if (text.length !== 0 && e.which === 13) {
             this.props.addItem({text: text});
